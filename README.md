@@ -29,4 +29,10 @@
 ### Database
 ![Database](https://github.com/prkskrs/CRUD-JsonPowerDB/blob/master/Screenshots/DataBase.png)
 
+### Request
+![Database](https://github.com/prkskrs/CRUD-JsonPowerDB/blob/master/Screenshots/JsonRequest.png)
+
+### Response
+![Response](https://github.com/prkskrs/CRUD-JsonPowerDB/blob/master/Screenshots/Response.png)
+
 
