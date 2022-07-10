@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>CRUD Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="​http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"​></script>
+    </head>
+    <body>
+        <h2>Update Name </h2>
+        <form>
+          <div class="form-group">
+             <span> <label for="empId">Employee Id:</label> <label id="empIdMsg"></label> </span> 
+              <input type="text" class="form-control" id="empId" placeholder="Enter Employee ID :" name="empId">
+         </div>
+         <div class="form-group">
+            <label for="empName">Employee Name:</label>
+            <input type="email" class="form-control" id="empName" placeholder="Enter Employee Name" name="empName">
+          </div>
+          <button type="button" class="btn btn-primary" id="empSave" value="Save" onclick="updateData();">Retrieve</button>
+        </form>
+      </div>
+    <script>
+        function executeCommand(reqString, dbBaseUrl, apiEndPointUrl) {
+            var url = dbBaseUrl + apiEndPointUrl;
+            var jsonObj;
+            $.post(url, reqString, function (result) {
+                jsonObj = JSON.parse(result);
+            }).fail(function (result) {
+                var dataJsonObj = result.responseText;
+                jsonObj = JSON.parse(dataJsonObj);
+            });
+            return jsonObj;
+        }
+        function updateData(){
+            var token = "90937----";
+            var dbname = "Google";
+            var relationName = "Employee-REL";
+            var id = parseInt(document.getElementById("empId").value);
+            var newname = document.getElementById("empName").value;
+            
+            var jsonObj = {
+                empName : newname,
+            };
+            var reqString = createUPDATERecordRequest(token, JSON.stringify(jsonObj), dbname, relationName, roll);
+            alert(reqString);
+            jQuery.ajaxSetup({async: false});
+            var resultObj = executeCommand(reqString,
+                    "http://api.login2explore.com:5577", "/api/iml");
+            jQuery.ajaxSetup({async: true});
+            alert(JSON.stringify(resultObj));
+            
+        }
+    </script>
+    </body>
+</html>
